@@ -6,10 +6,17 @@ const pressEnter = () => {
       const searchZip = $('#searchBar').val();
       if (validateSearch(searchZip)) {
         owm.showResults(searchZip);
+        fiveDayBtn();
       } else {
         alert(`That's not a zipcode!`);
       };
     }
+  });
+};
+
+const fiveDayBtn = () => {
+  $('#fiveday').click(() => {
+    console.log('hi');
   });
 };
 

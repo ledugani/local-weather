@@ -8,7 +8,7 @@ const domString = (weatherArray) => {
   strang +=     `<p><strong>Current Conditions: </strong>${weatherArray.weather[0].description}</p>`;
   strang +=     `<p><strong>Barometric Pressure: </strong>${weatherArray.main.pressure} hPa</p>`;
   strang +=     `<p><strong>Wind Speed: </strong>${weatherArray.wind.speed} mph</p>`;
-  strang +=     `<p><a href="#" class="btn btn-default" role="button">3-Day</a> <a href="#" class="btn btn-default" role="button">5-Day</a></p>`;
+  strang +=     `<p><a href="#" id="threeday" class="btn btn-default" role="button">3-Day</a> <a href="#" id="fiveday" class="btn btn-default" role="button">5-Day</a></p>`;
   strang +=   `</div>`;
   strang +=  `</div>`;
   strang += `</div>`;
