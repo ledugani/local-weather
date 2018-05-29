@@ -1,5 +1,7 @@
 #body {
-  background-color: plum;
+  background-image: url(/img/rainy-weather.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 #weather {
