@@ -6,7 +6,7 @@ const pressEnter = () => {
       const searchZip = $('#searchBar').val();
       if (validateSearch(searchZip)) {
         owm.showResults(searchZip);
-        fiveDayBtn();
+        fiveDayBtn(searchZip);
       } else {
         alert(`That's not a zipcode!`);
       };
@@ -14,9 +14,9 @@ const pressEnter = () => {
   });
 };
 
-const fiveDayBtn = () => {
-  $('#fiveday').click(() => {
-    console.log('hi');
+const fiveDayBtn = (userInput) => {
+  $(document).on('click', '#fiveday', () => {
+    owm.showFiverResults(userInput);
   });
 };
 
