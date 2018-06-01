@@ -36,7 +36,7 @@ const showResults = (searchText) => {
 
 const enterZipCodeForFiveDay = (text) => {
   return new Promise((resolve, reject) => {
-    $.ajax(`http://api.openweathermap.org/data/2.5/forecast?zip=${text}&appid=${owmKey}`)
+    $.ajax(`http://api.openweathermap.org/data/2.5/forecast?zip=${text}&appid=${owmKey}&units=imperial`)
       .done((results) => {
         resolve(results);
       })

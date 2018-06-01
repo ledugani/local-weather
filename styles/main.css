@@ -10,4 +10,10 @@
 
 #fiver {
   padding: 25px;
+  width: 100%;
+}
+
+.day {
+  margin: 10px;
+  width: 20%;
 }
