@@ -1,4 +1,3 @@
-
 // One Day
 
 const oneDayDomString = (weatherArray) => {
