@@ -13,7 +13,17 @@
   width: 100%;
 }
 
+#no-padding {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.v-align-center {
+  padding-top: auto;
+}
+
 .day {
   margin: 10px;
   width: 20%;
 }
+
