@@ -29,4 +29,32 @@ const validateSearch = (input) => {
   }
 };
 
-module.exports = pressEnter;
+const showSearch = () => {
+  $('#searchBtn').addClass('active');
+  $('#search').removeClass('hide');
+  $('#myForecasts').addClass('hide');
+  $('#myForecastsBtn').removeClass('active');
+};
+
+const showSavedForecasts = () => {
+  $('#searchBtn').removeClass('active');
+  $('#search').addClass('hide');
+  $('#myForecasts').removeClass('hide');
+  $('#myForecastsBtn').addClass('active');
+};
+
+const bindEvents = () => {
+  $('#searchBtn').on('click', () => {
+    showSearch();
+  });
+  $('#myForecastsBtn').on('click', () => {
+    showSavedForecasts();
+  });
+};
+
+const initializer = () => {
+  pressEnter();
+  bindEvents();
+};
+
+module.exports = initializer;
