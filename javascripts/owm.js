@@ -8,7 +8,9 @@ const setKey = (key) => {
   owmKey = key;
 };
 
-const enterZipCode = (text) => {
+// Current Weather
+
+const enterZipCodeForOneDay = (text) => {
   return new Promise((resolve, reject) => {
     $.ajax(`http://api.openweathermap.org/data/2.5/weather?zip=${text},us&appid=${owmKey}&units=imperial`)
       .done((results) => {
@@ -21,9 +23,33 @@ const enterZipCode = (text) => {
 };
 
 const showResults = (searchText) => {
-  enterZipCode(searchText)
+  enterZipCodeForOneDay(searchText)
     .then((results) => {
-      dom.domString(results);
+      dom.oneDayDomString(results);
+    })
+    .catch((err) => {
+      console.error('search error', err);
+    });
+};
+
+// Five-Day Weather
+
+const enterZipCodeForFiveDay = (text) => {
+  return new Promise((resolve, reject) => {
+    $.ajax(`http://api.openweathermap.org/data/2.5/forecast?zip=${text}&appid=${owmKey}&units=imperial`)
+      .done((results) => {
+        resolve(results);
+      })
+      .fail((error) => {
+        reject(error);
+      });
+  });
+};
+
+const showFiverResults = (searchText) => {
+  enterZipCodeForFiveDay(searchText)
+    .then((results) => {
+      dom.fiveDayDomString(results);
     })
     .catch((err) => {
       console.error('search error', err);
@@ -33,4 +59,5 @@ const showResults = (searchText) => {
 module.exports = {
   showResults,
   setKey,
+  showFiverResults,
 };
