@@ -3,7 +3,7 @@
 const oneDayDomString = (weatherArray) => {
   let strang = '';
   strang += `<div class="col-sm-6 col-md-4 col-md-offset-4">`;
-  strang +=  `<div class="thumbnail">`;
+  strang +=  `<div class="thumbnail forecast">`;
   strang +=   `<div class="caption">`;
   strang +=     `<h3>${weatherArray.name}</h3>`;
   strang +=     `<img src="https://openweathermap.org/img/w/${weatherArray.weather[0].icon}.png">`;
@@ -12,16 +12,13 @@ const oneDayDomString = (weatherArray) => {
   strang +=     `<p><strong>Barometric Pressure: </strong>${weatherArray.main.pressure} hPa</p>`;
   strang +=     `<p><strong>Wind Speed: </strong>${weatherArray.wind.speed} mph</p>`;
   strang +=     `<p><strong>Humidity: </strong>${weatherArray.main.humidity}%</p>`;
-  strang +=     `<p><a href="#" id="fiveday" class="btn btn-default" role="button">5-Day</a></p>`;
+  strang +=     `<p><button type="button" id="${weatherArray.dt}" class="btn btn-success save-forecast">Save Forecast</button>
+  <a href="#" id="fiveday" class="btn btn-default" role="button">5-Day</a></p>`;
   strang +=   `</div>`;
   strang +=  `</div>`;
   strang += `</div>`;
 
-  printToOneDay(strang);
-};
-
-const printToOneDay = (stringz) => {
-  $('#weather').html(stringz);
+  printToDom('weather', strang);
 };
 
 // Five Day
@@ -52,19 +49,21 @@ const fiveDayDomString = (weatherArray) => {
       newStrang +=     `<h6><strong>Wind Speed: </strong>${day.wind.speed} mph</h6>`;
       newStrang +=     `<h6><strong>Humidity: </strong>${day.main.humidity}%</h6>`;
       newStrang +=    `</div>`;
+      newStrang +=    `<button type="button" id="${day.dt}" class="btn btn-success save-forecast">Save Forecast</button>`;
       newStrang +=  `</div>`;
       newStrang += `</div>`;
       newStrang += `</div>`;
     }
   });
-  printToFiveDay(newStrang);
+  printToDom('fiver', newStrang);
 };
 
-const printToFiveDay = (strangz) => {
-  $('#fiver').html(strangz);
+const printToDom = (whereToPrint, stringz) => {
+  $(`#${whereToPrint}`).html(stringz);
 };
 
 module.exports = {
   oneDayDomString,
   fiveDayDomString,
+  printToDom,
 };
