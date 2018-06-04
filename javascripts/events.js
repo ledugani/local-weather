@@ -1,5 +1,5 @@
 const owm = require('./owm');
-const dom = require('./dom');
+// const dom = require('./dom');
 
 // Navbar Stuff
 
@@ -64,9 +64,11 @@ const fiveDayBtn = (userInput) => {
 
 const saveBtnDomEvent = () => {
   $(document).on('click', '.save-forecast', (e) => {
-    const forecastToAdd = $(e.target).closest('.forecast');
+    const clickedForecast = $(e.target).closest('.forecast').prevObject[0];
+    // const clickedForecastId = $(e.target).closest('.forecast').prevObject[0].offsetParent.id;
+    console.log(clickedForecast);
     // need to build a new dom string instead of printing to dom
-    dom.printToDom('savedForecasts', forecastToAdd);
+    // dom.savedDomString(clickedForecast);
   });
 };
 

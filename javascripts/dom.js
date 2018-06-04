@@ -30,10 +30,10 @@ const fiveDayDomString = (weatherArray) => {
   days.forEach((day, index) => {
     if (index % 8 === 3) {
       if (counter === 0) {
-        newStrang += `<div id="no-padding" class="panel panel-info col-md-2 col-md-offset-1 day">`;
+        newStrang += `<div id="${day.dt}" class="panel panel-info col-md-2 col-md-offset-1 day no-padding">`;
         counter++;
       } else {
-        newStrang += `<div id="no-padding" class="panel panel-info col-md-2 day">`;
+        newStrang += `<div id="${day.dt}" class="panel panel-info col-md-2 day no-padding">`;
       };
       newStrang +=  `<div class="panel-heading">`;
       newStrang +=    `<h4 class="panel-title">${day.dt_txt}</h4>`;
@@ -49,13 +49,27 @@ const fiveDayDomString = (weatherArray) => {
       newStrang +=     `<h6><strong>Wind Speed: </strong>${day.wind.speed} mph</h6>`;
       newStrang +=     `<h6><strong>Humidity: </strong>${day.main.humidity}%</h6>`;
       newStrang +=    `</div>`;
-      newStrang +=    `<button type="button" id="${day.dt}" class="btn btn-success save-forecast">Save Forecast</button>`;
+      newStrang +=    `<button type="button" class="btn btn-success save-forecast">Save Forecast</button>`;
       newStrang +=  `</div>`;
       newStrang += `</div>`;
       newStrang += `</div>`;
     }
   });
   printToDom('fiver', newStrang);
+};
+
+// Saved dom string
+
+const savedDomString = (savedForecast) => {
+  const latestDomString = `
+  <div class="panel panel-success col-md-4">
+    <div class="panel-heading">${savedForecast}</div>
+    <div class="panel-body">
+      Panel content
+    </div>
+  </div>
+  `;
+  printToDom('savedForecasts', latestDomString);
 };
 
 const printToDom = (whereToPrint, stringz) => {
@@ -65,5 +79,6 @@ const printToDom = (whereToPrint, stringz) => {
 module.exports = {
   oneDayDomString,
   fiveDayDomString,
+  savedDomString,
   printToDom,
 };
