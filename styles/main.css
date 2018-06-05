@@ -13,7 +13,7 @@
   width: 100%;
 }
 
-#no-padding {
+.no-padding {
   padding-left: 0;
   padding-right: 0;
 }
@@ -26,4 +26,3 @@
   margin: 10px;
   width: 20%;
 }
-

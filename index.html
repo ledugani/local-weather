@@ -25,11 +25,22 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-            <li id="searchBtn"><a href="#">Search</a></li>
+            <li id="myForecastsBtn"><a href="#">Saved Forecasts</a></li>
+            <li id="searchBtn" class="active"><a href="#">Search</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
+
+    <div id="myForecasts" class="hide text-center">
+      <h1>My Forecasts</h1>
+      <!-- <div id="filterButtons">
+        <button class="btn btn-info wishlist">Show Wishlist Movies</button>
+        <button class="btn btn-warning watched">Show Watched Movies</button>
+        <button class="btn btn-success all">Show All Movies</button>
+      </div> -->
+      <div id="savedForecasts" class="text-center row"></div>
+    </div>
 
     <div id="search" class="text-center">
       <h1>Local Weather by Zipcode</h1>
@@ -51,6 +62,7 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
     <script src="dist/app.js"></script>
   </body>
 </html>

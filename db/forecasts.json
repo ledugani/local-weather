@@ -1,0 +1,114 @@
+{
+  "forecasts": {
+    "forecast0": {
+      "dt_txt": "2018-06-07 03:00:00",
+      "temp": 79,
+      "icon": "weUSwMdQIa3NaXVzwUoIIcAi85d.jpg",
+      "description": 5,
+      "pressure": 1014,
+      "speed": 3.36,
+      "humidity": 47,
+      "isScary": false,
+      "dt": "12345"
+    },
+    "forecast1": {
+			"dt_txt": "Star Wars: The Force Awakens1",
+			"temp": 79,
+			"icon": "weUSwMdQIa3NaXVzwUoIIcAi85d.jpg",
+      "description": 5,
+      "pressure": 1014,
+      "speed": 3.36,
+      "humidity": 47,
+			"isScary": false,
+			"dt": "12345"
+    },
+    "forecast2": {
+      "dt_txt": "Star Wars: The Force Awakens2",
+      "temp": 79,
+      "icon": "weUSwMdQIa3NaXVzwUoIIcAi85d.jpg",
+      "description": 5,
+      "pressure": 1014,
+      "speed": 3.36,
+      "humidity": 47,
+      "isScary": false,
+      "dt": "12345"
+    },
+    "forecast3": {
+      "dt_txt": "Star Wars: The Force Awakens3",
+      "temp": 79,
+      "icon": "weUSwMdQIa3NaXVzwUoIIcAi85d.jpg",
+      "description": 5,
+      "pressure": 1014,
+      "speed": 3.36,
+      "humidity": 47,
+      "isScary": false,
+      "dt": "12345"
+    },
+    "forecast4": {
+      "dt_txt": "Star Wars: The Force Awakens4",
+      "temp": 79,
+      "icon": "weUSwMdQIa3NaXVzwUoIIcAi85d.jpg",
+      "description": 5,
+      "pressure": 1014,
+      "speed": 3.36,
+      "humidity": 47,
+      "isScary": false,
+      "dt": "12345"
+    },
+    "forecast5": {
+      "dt_txt": "Star Wars: The Force Awakens5",
+      "temp": 79,
+      "icon": "weUSwMdQIa3NaXVzwUoIIcAi85d.jpg",
+      "description": 5,
+      "pressure": 1014,
+      "speed": 3.36,
+      "humidity": 47,
+      "isScary": false,
+      "dt": "12345"
+    },
+    "forecast6": {
+      "dt_txt": "Star Wars: The Force Awakens6",
+      "temp": 79,
+      "icon": "weUSwMdQIa3NaXVzwUoIIcAi85d.jpg",
+      "description": 5,
+      "pressure": 1014,
+      "speed": 3.36,
+      "humidity": 47,
+      "isScary": false,
+      "dt": "12345"
+    },
+    "forecast7": {
+      "dt_txt": "Star Wars: The Force Awakens7",
+      "temp": 79,
+      "icon": "weUSwMdQIa3NaXVzwUoIIcAi85d.jpg",
+      "description": 5,
+      "pressure": 1014,
+      "speed": 3.36,
+      "humidity": 47,
+      "isScary": false,
+      "dt": "12345"
+    },
+    "forecast8": {
+      "dt_txt": "Star Wars: The Force Awakens8",
+      "temp": 79,
+      "icon": "weUSwMdQIa3NaXVzwUoIIcAi85d.jpg",
+      "description": 5,
+      "pressure": 1014,
+      "speed": 3.36,
+      "humidity": 47,
+      "isScary": false,
+      "dt": "12345"
+    },
+    "forecast9": {
+      "dt_txt": "Star Wars: The Force Awakens9",
+      "temp": 79,
+      "icon": "weUSwMdQIa3NaXVzwUoIIcAi85d.jpg",
+      "description": 5,
+      "pressure": 1014,
+      "speed": 3.36,
+      "humidity": 47,
+      "isScary": false,
+      "dt": "12345"
+    }
+  }
+}
