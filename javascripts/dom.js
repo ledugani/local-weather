@@ -40,14 +40,14 @@ const fiveDayDomString = (weatherArray) => {
       newStrang +=  `</div>`;
       newStrang +=  `<div class="panel-body">`;
       newStrang +=    `<div class="col-md-6 col-sm-6 v-align-center">`;
-      newStrang +=      `<img src="https://openweathermap.org/img/w/${day.weather[0].icon}.png">`;
-      newStrang +=      `<h4>${Math.ceil(day.main.temp)}&#8457;, ${day.weather[0].main}</h4>`;
+      newStrang +=      `<img class="icon" src="https://openweathermap.org/img/w/${day.weather[0].icon}.png">`;
+      newStrang +=      `<h4 class="temperature">${Math.ceil(day.main.temp)}&#8457;, ${day.weather[0].main}</h4>`;
       newStrang +=    `</div>`;
       newStrang +=    `<div class="col-md-6">`;
-      newStrang +=     `<h6><strong>Conditions: </strong>${day.weather[0].description}</h6>`;
-      newStrang +=     `<h6><strong>Barometric Pressure: </strong>${day.main.pressure} hPa</h6>`;
-      newStrang +=     `<h6><strong>Wind Speed: </strong>${day.wind.speed} mph</h6>`;
-      newStrang +=     `<h6><strong>Humidity: </strong>${day.main.humidity}%</h6>`;
+      newStrang +=     `<h6 class="conditions"><strong>Conditions: </strong>${day.weather[0].description}</h6>`;
+      newStrang +=     `<h6 class="pressure"><strong>Barometric Pressure: </strong>${day.main.pressure} hPa</h6>`;
+      newStrang +=     `<h6 class="windspeed"><strong>Wind Speed: </strong>${day.wind.speed} mph</h6>`;
+      newStrang +=     `<h6 class="humidity"><strong>Humidity: </strong>${day.main.humidity}%</h6>`;
       newStrang +=    `</div>`;
       newStrang +=    `<button type="button" class="btn btn-success save-forecast">Save Forecast</button>`;
       newStrang +=  `</div>`;
@@ -63,9 +63,9 @@ const fiveDayDomString = (weatherArray) => {
 const savedDomString = (savedForecast) => {
   const latestDomString = `
   <div class="panel panel-success col-md-4">
-    <div class="panel-heading">${savedForecast}</div>
+    <div class="panel-heading">Item Saved</div>
     <div class="panel-body">
-      Panel content
+      ${savedForecast}
     </div>
   </div>
   `;
