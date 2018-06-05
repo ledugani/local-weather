@@ -20,7 +20,30 @@ const saveForecast = (newForecast) => {
   });
 };
 
+const viewSavedForecasts = () => {
+  return new Promise((resolve, reject) => {
+    const allForecastsArray = [];
+    $.ajax({
+      method: 'GET',
+      url: `${firebaseConfig.databaseURL}/forecasts.json`,
+    })
+      .done((allForecastsObj) => {
+        if (allForecastsObj !== null) {
+          Object.keys(allForecastsObj).forEach((fbkey) => {
+            allForecastsObj[fbkey].id = fbkey;
+            allForecastsArray.push(allForecastsObj[fbkey]);
+          });
+        }
+        resolve(allForecastsArray);
+      })
+      .fail((errr) => {
+        reject(errr);
+      });
+  });
+};
+
 module.exports = {
   saveForecast,
   setConfig,
+  viewSavedForecasts,
 };

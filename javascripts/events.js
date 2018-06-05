@@ -1,7 +1,7 @@
 /* eslint camelcase: 0 */
 
 const owm = require('./owm');
-// const dom = require('./dom');
+const dom = require('./dom');
 const firebaseApi = require('./firebaseApi');
 
 // Navbar Stuff
@@ -18,6 +18,7 @@ const showSavedForecasts = () => {
   $('#search').addClass('hide');
   $('#myForecasts').removeClass('hide');
   $('#myForecastsBtn').addClass('active');
+  getAllForecastsEvent();
 };
 
 const bindEvents = () => {
@@ -68,23 +69,25 @@ const fiveDayBtn = (userInput) => {
 const saveBtnDomEvent = () => {
   $(document).on('click', '.save-forecast', (e) => {
     const clickedForecast = $(e.target).closest('.day');
-    const clickedForecastId = $(e.target).closest('.forecast').prevObject[0].offsetParent.id;
+    // const clickedForecastId = $(e.target).closest('.forecast').prevObject[0].offsetParent.id;
 
     const forecastToAdd = {
       dt_txt: clickedForecast.find('.panel-title').text(),
       temp: clickedForecast.find('.temperature').text(),
-      icon: clickedForecast.find('.icon').text(),
+      icon: clickedForecast.find('.icon').attr('src'),
       description: clickedForecast.find('.conditions').text(),
       pressure: clickedForecast.find('.pressure').text(),
       speed: clickedForecast.find('.windspeed').text(),
       humidity: clickedForecast.find('.humidity').text(),
       isScary: false,
-      dt: clickedForecast.find('.day').text(),
+      dt: clickedForecast.find('.day').attr('id'),
     };
+
+    const button = $(e.target).closest('button');
 
     firebaseApi.saveForecast(forecastToAdd)
       .then(() => {
-        console.log(clickedForecastId);
+        button.html('Saved &#10003;');
       })
       .catch((error) => {
         console.error('an error occurred when saving forecast', error);
@@ -93,6 +96,16 @@ const saveBtnDomEvent = () => {
     // need to build a new dom string instead of printing to dom
     // dom.savedDomString(clickedForecast);
   });
+};
+
+const getAllForecastsEvent = () => {
+  firebaseApi.viewSavedForecasts()
+    .then((forecastsArray) => {
+      dom.savedDomString(forecastsArray);
+    })
+    .catch((error) => {
+      console.error('error in get all forecasts', error);
+    });
 };
 
 // Initializer for All Events

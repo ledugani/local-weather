@@ -44,10 +44,10 @@ const fiveDayDomString = (weatherArray) => {
       newStrang +=      `<h4 class="temperature">${Math.ceil(day.main.temp)}&#8457;, ${day.weather[0].main}</h4>`;
       newStrang +=    `</div>`;
       newStrang +=    `<div class="col-md-6">`;
-      newStrang +=     `<h6 class="conditions"><strong>Conditions: </strong>${day.weather[0].description}</h6>`;
-      newStrang +=     `<h6 class="pressure"><strong>Barometric Pressure: </strong>${day.main.pressure} hPa</h6>`;
-      newStrang +=     `<h6 class="windspeed"><strong>Wind Speed: </strong>${day.wind.speed} mph</h6>`;
-      newStrang +=     `<h6 class="humidity"><strong>Humidity: </strong>${day.main.humidity}%</h6>`;
+      newStrang +=     `<h6><strong>Conditions: </strong><p class="conditions">${day.weather[0].description}</p></h6>`;
+      newStrang +=     `<h6><strong>Barometric Pressure: </strong><p class="pressure">${day.main.pressure}</p> hPa</h6>`;
+      newStrang +=     `<h6><strong>Wind Speed: </strong><p class="windspeed">${day.wind.speed}</p> mph</h6>`;
+      newStrang +=     `<h6><strong>Humidity: </strong><p class="humidity">${day.main.humidity}</p>%</h6>`;
       newStrang +=    `</div>`;
       newStrang +=    `<button type="button" class="btn btn-success save-forecast">Save Forecast</button>`;
       newStrang +=  `</div>`;
@@ -61,14 +61,24 @@ const fiveDayDomString = (weatherArray) => {
 // Saved dom string
 
 const savedDomString = (savedForecast) => {
-  const latestDomString = `
-  <div class="panel panel-success col-md-4">
-    <div class="panel-heading">Item Saved</div>
-    <div class="panel-body">
-      ${savedForecast}
-    </div>
-  </div>
-  `;
+  console.log(savedForecast);
+  let latestDomString = '';
+  savedForecast.forEach((forecast) => {
+    latestDomString += `<div class="panel panel-success col-md-4 day">`;
+    latestDomString +=  `<div class="panel-heading">`;
+    latestDomString +=    `<h4>${forecast.dt_txt}</h4>`;
+    latestDomString +=  `</div>`;
+    latestDomString +=  `<div class="panel-body">`;
+    latestDomString +=    `<img class="icon" src="${forecast.icon}">`;
+    latestDomString +=    `<h4>${forecast.temp}</h4>`;
+    latestDomString +=    `<h6><strong>Conditions:</strong> ${forecast.description}</h6>`;
+    latestDomString +=    `<h6><strong>Barometric Pressure:</strong> ${forecast.pressure}hPa</h6>`;
+    latestDomString +=    `<h6><strong>Wind Speed:</strong> ${forecast.speed}mph</h6>`;
+    latestDomString +=    `<h6><strong>Humidity:</strong> ${forecast.humidity}%</h6>`;
+    latestDomString +=  `</div>`;
+    latestDomString += `</div>`;
+  });
+
   printToDom('savedForecasts', latestDomString);
 };
 
