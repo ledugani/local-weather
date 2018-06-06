@@ -30,10 +30,10 @@ const fiveDayDomString = (weatherArray) => {
   days.forEach((day, index) => {
     if (index % 8 === 3) {
       if (counter === 0) {
-        newStrang += `<div id="${day.dt}" class="panel panel-info col-md-2 col-md-offset-1 day no-padding">`;
+        newStrang += `<div id="${day.dt}" class="forecast panel panel-info col-md-2 col-md-offset-1 day no-padding">`;
         counter++;
       } else {
-        newStrang += `<div id="${day.dt}" class="panel panel-info col-md-2 day no-padding">`;
+        newStrang += `<div id="${day.dt}" class="forecast panel panel-info col-md-2 day no-padding">`;
       };
       newStrang +=  `<div class="panel-heading">`;
       newStrang +=    `<h4 class="panel-title">${day.dt_txt}</h4>`;
@@ -61,10 +61,9 @@ const fiveDayDomString = (weatherArray) => {
 // Saved dom string
 
 const savedDomString = (savedForecast) => {
-  console.log(savedForecast);
   let latestDomString = '';
   savedForecast.forEach((forecast) => {
-    latestDomString += `<div class="panel panel-success col-md-4 day">`;
+    latestDomString += `<div id="no-padding" class="forecast panel panel-success col-md-4 day" data-firebase-id="${forecast.id}">`;
     latestDomString +=  `<div class="panel-heading">`;
     latestDomString +=    `<h4>${forecast.dt_txt}</h4>`;
     latestDomString +=  `</div>`;
@@ -76,6 +75,7 @@ const savedDomString = (savedForecast) => {
     latestDomString +=    `<h6><strong>Wind Speed:</strong> ${forecast.speed}mph</h6>`;
     latestDomString +=    `<h6><strong>Humidity:</strong> ${forecast.humidity}%</h6>`;
     latestDomString +=  `</div>`;
+    latestDomString +=  `<div class="panel-footer"><a class="btn deleteForecast">Delete</a></div>`;
     latestDomString += `</div>`;
   });
 

@@ -98,6 +98,20 @@ const saveBtnDomEvent = () => {
   });
 };
 
+// delete button
+const deleteBtnEvent = () => {
+  $(document).on('click', '.deleteForecast', (e) => {
+    const clickedForecastId = $(e.target).closest('.forecast').data('firebaseId');
+    firebaseApi.deleteForecastFromDb(clickedForecastId)
+      .then(() => {
+        getAllForecastsEvent();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  });
+};
+
 const getAllForecastsEvent = () => {
   firebaseApi.viewSavedForecasts()
     .then((forecastsArray) => {
@@ -113,6 +127,7 @@ const getAllForecastsEvent = () => {
 const initializer = () => {
   pressEnter();
   bindEvents();
+  deleteBtnEvent();
 };
 
 module.exports = initializer;

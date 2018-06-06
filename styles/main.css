@@ -4,6 +4,11 @@
   background-repeat: no-repeat;
 }
 
+#myForecasts {
+  text-align: center;
+  margin: 25px;
+}
+
 #weather {
   padding: 25px;
 }
@@ -13,9 +18,14 @@
   width: 100%;
 }
 
-.no-padding {
+.no-padding, #no-padding {
   padding-left: 0;
   padding-right: 0;
+}
+
+.deleteForecast {
+  color: tomato;
+  text-decoration: underline;
 }
 
 .v-align-center {
