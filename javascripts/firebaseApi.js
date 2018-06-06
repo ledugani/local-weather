@@ -42,8 +42,24 @@ const viewSavedForecasts = () => {
   });
 };
 
+const deleteForecastFromDb = (forecastId) => {
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      method: 'DELETE',
+      url: `${firebaseConfig.databaseURL}/forecasts/${forecastId}.json`,
+    })
+      .done(() => {
+        resolve();
+      })
+      .fail((error) => {
+        reject(error);
+      });
+  });
+};
+
 module.exports = {
   saveForecast,
   setConfig,
   viewSavedForecasts,
+  deleteForecastFromDb,
 };
