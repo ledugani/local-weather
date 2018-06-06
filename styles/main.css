@@ -9,6 +9,10 @@
   margin: 25px;
 }
 
+.forecast {
+  border: 1px powderblue solid;
+}
+
 #weather {
   padding: 25px;
 }
