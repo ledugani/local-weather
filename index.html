@@ -26,8 +26,9 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-            <li id="myForecastsBtn"><a href="#">Saved Forecasts</a></li>
-            <li id="searchBtn" class="active"><a href="#">Search</a></li>
+            <li id="authBtn" class="active"><a href="#">Authentication</a></li>
+            <li id="myForecastsBtn" class="hide"><a href="#">Saved Forecasts</a></li>
+            <li id="searchBtn" class="hide"><a href="#">Search</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
@@ -43,7 +44,7 @@
       <div id="savedForecasts" class="text-center row"></div>
     </div>
 
-    <div id="search" class="text-center">
+    <div id="search" class="text-center hide">
       <h1>Local Weather by Zipcode</h1>
 
       <div class="input-group col-sm-6 col-sm-offset-3">
@@ -53,6 +54,76 @@
 
       <div id="weather" class="row"></div>
       <div id="fiver" class="row text-center"></div>
+    </div>
+
+    <div id="authScreen" class="text-center">
+      <div id="login-form">
+        <h1 class="text-center">Sign In</h1>
+        <form class="form-horizontal col-sm-4 col-sm-offset-4 col-xs-8 col-xs-offset-2">
+            <div id="signin-error" class="alert alert-danger hide" role="alert">
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+              <span class="sr-only">Error:</span>
+              <span id="signin-error-msg"></span>
+            </div>
+          <div class="form-group">
+            <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+            <div class="col-sm-10">
+              <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword" class="col-sm-2 control-label">Password</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" id="sign-in-btn" class="btn btn-default">Sign in</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <a href="#" id="register-link">Sign Up</a>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div id="registration-form" class="hide">
+        <h1 class="text-center">Sign Up</h1>
+        <form class="form-horizontal col-sm-4 col-sm-offset-4 col-xs-8 col-xs-offset-2">
+          <div id="register-error" class="alert alert-danger hide" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            <span id="register-error-msg"></span>
+          </div>
+          <div class="form-group">
+            <label for="registerEmail" class="col-sm-2 control-label">Email</label>
+            <div class="col-sm-10">
+              <input type="email" class="form-control" id="registerEmail" placeholder="Email">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="registerPassword" class="col-sm-2 control-label">Password</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control" id="registerPassword" placeholder="Password">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" id="register-btn" class="btn btn-default">Register</button>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <a href="#" id="sign-in-link">Go to Login</a>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
 
     <!-- Latest compiled and minified CSS -->

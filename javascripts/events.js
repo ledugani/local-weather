@@ -151,6 +151,28 @@ const getAllForecastsEvent = () => {
     });
 };
 
+// authentication events
+const authEvents = () => {
+  $('#sign-in-btn').click((e) => {
+    e.preventDefault();
+    const email = $('#inputEmail').val();
+    const password = $('#inputPassword').val();
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .then((user) => {
+        $('.active').removeClass('active');
+        $('#myForecastsBtn').addClass('active');
+        $('#myForecasts, #search').addClass('hide');
+        getAllForecastsEvent();
+        $('#signin-error').addClass('hide');
+      })
+      .catch((error) => {
+        $('#signin-error').removeClass('hide');
+        $('#signin-error-msg').text(error.message);
+        console.error(error.message);
+      });
+  });
+};
+
 // Initializer for All Events
 
 const initializer = () => {
@@ -158,6 +180,7 @@ const initializer = () => {
   bindEvents();
   deleteBtnEvent();
   scaryBtnEvent();
+  authEvents();
 };
 
 module.exports = initializer;
