@@ -112,6 +112,35 @@ const deleteBtnEvent = () => {
   });
 };
 
+// scary button event
+const scaryBtnEvent = () => {
+  $(document).on('click', '.scarryBtn', (e) => {
+    const forecastToUpdateId = $(e.target).closest('.forecast').data('firebaseId');
+    const clickedForecast = $(e.target).closest('.forecast');
+    const updatedForecast = {
+      dt_txt: clickedForecast.find('.panel-title').text(),
+      temp: clickedForecast.find('.temperature').text(),
+      icon: clickedForecast.find('.icon').attr('src'),
+      description: clickedForecast.find('.conditions').text(),
+      pressure: clickedForecast.find('.pressure').text(),
+      speed: clickedForecast.find('.windspeed').text(),
+      humidity: clickedForecast.find('.humidity').text(),
+      isScary: true,
+      dt: clickedForecast.find('.day').attr('id'),
+    };
+
+    firebaseApi.updateForecastInDb(updatedForecast, forecastToUpdateId)
+      .then(() => {
+        getAllForecastsEvent();
+      })
+      .catch((errrrrrorrrrrr) => {
+        console.error('error in updating forecast: ', errrrrrorrrrrr);
+      });
+  });
+};
+
+// view saved forecasts
+
 const getAllForecastsEvent = () => {
   firebaseApi.viewSavedForecasts()
     .then((forecastsArray) => {
@@ -128,6 +157,7 @@ const initializer = () => {
   pressEnter();
   bindEvents();
   deleteBtnEvent();
+  scaryBtnEvent();
 };
 
 module.exports = initializer;
