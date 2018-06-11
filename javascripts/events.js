@@ -160,8 +160,9 @@ const authEvents = () => {
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then((user) => {
         $('.active').removeClass('active');
-        $('#myForecastsBtn').addClass('active');
-        $('#myForecasts, #search').addClass('hide');
+        $('#searchBtn').addClass('active');
+        $('#authScreen, #authBtn').addClass('hide');
+        $('#search, #myForecastsBtn, #searchBtn').removeClass('hide');
         getAllForecastsEvent();
         $('#signin-error').addClass('hide');
       })
@@ -170,6 +171,30 @@ const authEvents = () => {
         $('#signin-error-msg').text(error.message);
         console.error(error.message);
       });
+  });
+
+  $('#register-btn').click(() => {
+    const email = $('#registerEmail').val();
+    const password = $('registerPassword').val();
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        $('#register-error').addClass('hide');
+      })
+      .catch((error) => {
+        $('#register-error').removeClass('hide');
+        $('#register-error-msg').text(error.message);
+        console.error(error.message);
+      });
+  });
+
+  $('#register-link').click(() => {
+    $('#login-form').addClass('hide');
+    $('#registration-form').removeClass('hide');
+  });
+
+  $('#sign-in-link').click(() => {
+    $('#login-form').removeClass('hide');
+    $('#registration-form').addClass('hide');
   });
 };
 

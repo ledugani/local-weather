@@ -13,6 +13,11 @@ const checkLoginStatus = () => {
       viewSavedForecasts();
     } else {
       // No user is signed in.
+      $('.active').removeClass('active');
+      $('#myForecasts, #search').addClass('hide');
+      $('#authBtn').addClass('active');
+      $('#authScreen, #authBtn').removeClass('hide');
+      $('#myForecastsBtn, #searchBtn').addClass('hide');
     }
   });
 };
