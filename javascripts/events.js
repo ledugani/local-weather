@@ -162,7 +162,7 @@ const authEvents = () => {
         $('.active').removeClass('active');
         $('#searchBtn').addClass('active');
         $('#authScreen, #authBtn').addClass('hide');
-        $('#search, #myForecastsBtn, #searchBtn').removeClass('hide');
+        $('#search, #myForecastsBtn, #searchBtn, #logout').removeClass('hide');
         getAllForecastsEvent();
         $('#signin-error').addClass('hide');
       })
@@ -195,6 +195,25 @@ const authEvents = () => {
   $('#sign-in-link').click(() => {
     $('#login-form').removeClass('hide');
     $('#registration-form').addClass('hide');
+  });
+
+  $('#logout').click(() => {
+    firebase.auth().signOut()
+      .then(() => {
+        // Sign-out successful.
+        $('#myForecasts, #search, #searchBtn, #myForecastsBtn, #logout').addClass('hide');
+        $('#authScreen, #authBtn').removeClass('hide');
+        $('.active').removeClass('active');
+        $('#authBtn').addClass('active');
+        $('#registerEmail').val('');
+        $('#registerPassword').val('');
+        $('#inputEmail').val('');
+        $('#inputPassword').val('');
+      })
+      .catch((error) => {
+        // An error happened.
+        console.error('an error occurred when signing out', error);
+      });
   });
 };
 
