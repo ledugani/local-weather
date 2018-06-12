@@ -151,6 +151,79 @@ const getAllForecastsEvent = () => {
     });
 };
 
+// authentication events
+const authEvents = () => {
+  $('#sign-in-btn').click((e) => {
+    e.preventDefault();
+    const email = $('#inputEmail').val();
+    const password = $('#inputPassword').val();
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .then((user) => {
+        $('.active').removeClass('active');
+        $('#searchBtn').addClass('active');
+        $('#authScreen, #authBtn').addClass('hide');
+        $('#search, #myForecastsBtn, #searchBtn, #logout').removeClass('hide');
+        getAllForecastsEvent();
+        $('#signin-error').addClass('hide');
+      })
+      .catch((error) => {
+        $('#signin-error').removeClass('hide');
+        $('#signin-error-msg').text(error.message);
+        console.error(error.message);
+      });
+  });
+
+  $('#register-btn').click(() => {
+    const email = $('#registerEmail').val();
+    const password = $('#registerPassword').val();
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        $('.active').removeClass('active');
+        $('#searchBtn').addClass('active');
+        $('#authScreen, #authBtn').addClass('hide');
+        $('#search, #myForecastsBtn, #searchBtn, #logout').removeClass('hide');
+        getAllForecastsEvent();
+        $('#signin-error').addClass('hide');
+      })
+      .catch((error) => {
+        $('#register-error').removeClass('hide');
+        $('#register-error-msg').text(error.message);
+        console.error(error.message);
+      });
+  });
+
+  $('#register-link').click(() => {
+    $('#login-form').addClass('hide');
+    $('#registration-form').removeClass('hide');
+  });
+
+  $('#sign-in-link').click(() => {
+    $('#login-form').removeClass('hide');
+    $('#registration-form').addClass('hide');
+  });
+
+  $('#logout').click(() => {
+    firebase.auth().signOut()
+      .then(() => {
+        // Sign-out successful.
+        $('#myForecasts, #search, #searchBtn, #myForecastsBtn, #logout').addClass('hide');
+        $('#authScreen, #authBtn').removeClass('hide');
+        $('.active').removeClass('active');
+        $('#authBtn').addClass('active');
+        $('#weather, #fiver').html('');
+        $('#searchBar').val('');
+        $('#registerEmail').val('');
+        $('#registerPassword').val('');
+        $('#inputEmail').val('');
+        $('#inputPassword').val('');
+      })
+      .catch((error) => {
+        // An error happened.
+        console.error('an error occurred when signing out', error);
+      });
+  });
+};
+
 // Initializer for All Events
 
 const initializer = () => {
@@ -158,6 +231,7 @@ const initializer = () => {
   bindEvents();
   deleteBtnEvent();
   scaryBtnEvent();
+  authEvents();
 };
 
 module.exports = initializer;
