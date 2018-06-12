@@ -5,7 +5,7 @@ const checkLoginStatus = () => {
     if (user) {
       setUID(user.uid);
       // User is signed in.
-      $('#myForecastsBtn, #searchBtn, #myForecasts, #search').removeClass('hide');
+      $('#myForecastsBtn, #searchBtn, #search, #logout').removeClass('hide');
       $('#authScreen, #authBtn').addClass('hide');
       $('.active').removeClass('active');
       $('#searchBtn').addClass('active');
