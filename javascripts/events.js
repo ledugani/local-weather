@@ -175,10 +175,15 @@ const authEvents = () => {
 
   $('#register-btn').click(() => {
     const email = $('#registerEmail').val();
-    const password = $('registerPassword').val();
+    const password = $('#registerPassword').val();
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then(() => {
-        $('#register-error').addClass('hide');
+        $('.active').removeClass('active');
+        $('#searchBtn').addClass('active');
+        $('#authScreen, #authBtn').addClass('hide');
+        $('#search, #myForecastsBtn, #searchBtn, #logout').removeClass('hide');
+        getAllForecastsEvent();
+        $('#signin-error').addClass('hide');
       })
       .catch((error) => {
         $('#register-error').removeClass('hide');
