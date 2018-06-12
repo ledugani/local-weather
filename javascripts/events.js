@@ -210,6 +210,8 @@ const authEvents = () => {
         $('#authScreen, #authBtn').removeClass('hide');
         $('.active').removeClass('active');
         $('#authBtn').addClass('active');
+        $('#weather, #fiver').html('');
+        $('#searchBar').val('');
         $('#registerEmail').val('');
         $('#registerPassword').val('');
         $('#inputEmail').val('');
